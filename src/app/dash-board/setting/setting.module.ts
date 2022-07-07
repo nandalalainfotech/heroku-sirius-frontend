@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { NgxFileDropModule } from 'ngx-file-drop';
+
 import { SettingRoutingModule } from './setting-routing.module';
 import { SettingComponent } from './setting.component';
 
@@ -12,7 +12,7 @@ import { SettingComponent } from './setting.component';
   imports: [
     CommonModule,
     SettingRoutingModule,
-    NgxFileDropModule,
+ 
     FormsModule
     
   ],

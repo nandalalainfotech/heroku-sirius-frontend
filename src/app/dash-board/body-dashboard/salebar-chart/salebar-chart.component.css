@@ -24,14 +24,19 @@
 }
 
 
-::ng-deep svg {
+/* ::ng-deep svg {
     float: none;
     width: 100%;
     height: auto;
-  }
+  } */
 
 .box {
     display: flex;
     justify-content: space-between;
     /* margin-left: 30px; */
+}
+
+apx-chart {
+    transition: width ease;
+    width: 100%;
 }

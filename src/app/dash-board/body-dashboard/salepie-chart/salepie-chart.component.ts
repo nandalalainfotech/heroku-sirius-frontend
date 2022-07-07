@@ -1,7 +1,25 @@
-import { Component, OnInit } from '@angular/core';
-import { LegendPosition } from '@swimlane/ngx-charts';
+import { Component, OnInit, ViewChild } from '@angular/core';
+// import { LegendPosition } from '@swimlane/ngx-charts';
 // import { single } from '../salepie-chart/data';
 import { PersonManager } from 'src/app/shared/services/restcontroller/bizservice/person.service';
+
+import { ApexGrid, ChartComponent } from "ng-apexcharts";
+
+import {
+  ApexNonAxisChartSeries,
+  ApexResponsive,
+  ApexChart
+} from "ng-apexcharts";
+
+export type ChartOptions = {
+  series: ApexNonAxisChartSeries | any;
+  chart: ApexChart | any;
+  responsive: ApexResponsive[] | any;
+  labels: any;
+  // grid: ApexGrid |any;
+  colors: string[] | any ;
+};
+
 
 @Component({
   selector: 'app-salepie-chart',
@@ -15,34 +33,49 @@ import { PersonManager } from 'src/app/shared/services/restcontroller/bizservice
 // }
 
 export class SalepieChartComponent implements OnInit {
-  single: any[] = [];
-  view: any[] = [700, 400];
+
+  @ViewChild("chart") chart!: ChartComponent;
+  public chartOptions!: Partial<ChartOptions>;
   femalecount: number = 0;
   malecount: number = 0;
   femalepercentage: number = 0;
   malepercentage: number = 0;
-  // options
-  gradient: boolean = true;
-  showLegend: boolean = true;
-  showLabels: boolean = true;
-  isDoughnut: boolean = false;
-  trust: any;
-  legendTitle: string = 'Genders';
   res: any;
   key: any;
-  public legendPosition: LegendPosition = LegendPosition.Below;
-  colorScheme = {domain: ['#006778', '#24A19C']};
+ 
   httpClient: any;
   domain: string[] | any;
-
+  series: any[] = [];
   constructor(private personmanager: PersonManager) {
-    // Object.assign(this, { single });
-
-    // const dynamicallyLoadJsonFile = import('../salepie-chart/data');
-
+   
   }
   ngOnInit(): void {
-
+    this.chartOptions = {
+      series:[ this.malecount, this.femalecount],
+      chart: {
+        width: 380,
+        type: "pie"
+      },
+      labels: ["Male", "Female"],
+      responsive: [
+        {
+          breakpoint: 480,
+          options: {
+            chart: {
+              width: 200
+            },
+            dataLabels: {
+              enabled: false
+            },
+            colors: ["#76BA99","E4AEC5"],
+            legend: {
+              position: "top"
+            }
+          }
+        }
+      ]
+    };
+  
     this.personmanager.allperson().subscribe((response) => {
       for (let i = 0; i < response.person001mb.length; i++) {
         if (response.person001mb[i].sex == 'male') {
@@ -52,31 +85,13 @@ export class SalepieChartComponent implements OnInit {
           this.femalecount++;
         }
       }
-      this.single = [{ name: "Male", value: this.malecount }, { name: "Female", value: this.femalecount }];
-      // console.log("muh", this.malecount,this.malecount)
-      // Object.assign(this, { s });
-
+      this.chartOptions.series = [this.malecount, this.femalecount];
     })
-
-    // for(var key in response)
-    // {
-    //   console.log("fix", response[key])
-    // }
+  
+  }
   }
 
 
-  onSelect(data: any): void {
-    //   // console.log('Item clicked', JSON.parse(JSON.stringify(data)));
-  }
-
-  onActivate(data: any): void {
-    //   // console.log('Activate', JSON.parse(JSON.stringify(data)));
-  }
-
-  onDeactivate(data: any): void {
-    //   // console.log('Deactivate', JSON.parse(JSON.stringify(data)));
-  }
-}
 
 
 

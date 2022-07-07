@@ -1,7 +1,10 @@
 import { CommonModule } from '@angular/common';
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
-import { FlexLayoutModule } from '@angular/flex-layout';
+// import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+// import { MatSidenavModule } from '@angular/material/sidenav';
+// import { MatTabsModule } from '@angular/material/tabs';
+// import { AgGridModule } from 'ag-grid-angular';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatTabsModule } from '@angular/material/tabs';
 import { AgGridModule } from 'ag-grid-angular';
@@ -21,7 +24,7 @@ import { SettingsComponent } from './settings.component';
     FormsModule,
     ReactiveFormsModule,
     MatTabsModule,
-    FlexLayoutModule,
+    // FlexLayoutModule,
     BreadcrumbModule,
     MatSidenavModule,
     AgGridModule.withComponents([])
