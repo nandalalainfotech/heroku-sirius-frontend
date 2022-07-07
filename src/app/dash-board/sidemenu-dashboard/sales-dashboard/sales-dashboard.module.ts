@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { BarChartModule, NgxChartsModule } from '@swimlane/ngx-charts';
+// import { BarChartModule, NgxChartsModule } from '@swimlane/ngx-charts';
 import { NgApexchartsModule } from 'ng-apexcharts';
 import { SalesDashboardRoutingModule } from './sales-dashboard-routing.module';
 
@@ -12,8 +12,8 @@ import { SalesDashboardRoutingModule } from './sales-dashboard-routing.module';
     CommonModule,
     SalesDashboardRoutingModule,
     NgApexchartsModule,
-    BarChartModule,
-    NgxChartsModule,
+    // BarChartModule,
+    // NgxChartsModule,
 
   ]
 })

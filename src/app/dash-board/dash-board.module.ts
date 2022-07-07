@@ -7,28 +7,24 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatTabsModule } from '@angular/material/tabs';
 import { NgbCollapseModule, NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { TranslateModule } from '@ngx-translate/core';
-import { LineChartModule, NgxChartsModule } from '@swimlane/ngx-charts';
-import { RoundProgressModule } from 'angular-svg-round-progressbar';
-import { GojsAngularModule } from 'gojs-angular';
-import { NgApexchartsModule } from 'ng-apexcharts';
-import { ChartsModule } from 'ng2-charts';
+// import { LineChartModule, NgxChartsModule } from '@swimlane/ngx-graph';
+// import { RoundProgressModule } from 'angular-svg-round-progressbar';
+// import { GojsAngularModule } from 'gojs-angular';
+// import { NgApexchartsModule } from 'ng-apexcharts';
+// import { ChartsModule } from 'ng2-charts';
+// import { ChartsModule } from 'ng2-charts';
 // import { ProgressbarModule } from 'ngx-bootstrap/progressbar';
+// import { ColorPickerModule } from 'ngx-color-picker';
 import { ColorPickerModule } from 'ngx-color-picker';
-import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
+// import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
 import { SubscriptionmasterManager } from '../shared/services/restcontroller/bizservice/subscriptionmaster.service';
 import { UserManager } from '../shared/services/restcontroller/bizservice/user.service';
 import { DataSharedService } from '../shared/services/services/datashared.service';
-import { AdvancepieChartComponent } from './body-dashboard/advancepie-chart/advancepie-chart.component';
 import { BodyDashboardComponent } from './body-dashboard/body-dashboard.component';
-import { ComboChartComponent } from './body-dashboard/combo-chart/combo-chart.component';
-import { DoughnutChartComponent } from './body-dashboard/doughnut-chart/doughnut-chart.component';
 import { PiegridChartComponent } from './body-dashboard/piegrid-chart/piegrid-chart.component';
-import { PolarChartComponent } from './body-dashboard/polar-chart/polar-chart.component';
+
 import { ProductChartComponent } from './body-dashboard/product-chart/product-chart.component';
-import { RealtimeChartComponent } from './body-dashboard/realtime-chart/realtime-chart.component';
 import { SalebarChartComponent } from './body-dashboard/salebar-chart/salebar-chart.component';
-import { SalegaugeChartComponent } from './body-dashboard/salegauge-chart/salegauge-chart.component';
-import { SalelineChartComponent } from './body-dashboard/saleline-chart/saleline-chart.component';
 import { SalepieChartComponent } from './body-dashboard/salepie-chart/salepie-chart.component';
 import { DashboardRoutingModule } from './dash-board-routing.module';
 import { DashBoardComponent } from './dash-board.component';
@@ -59,17 +55,21 @@ import { DashBoardComponent } from './dash-board.component';
 // import { RadarChartComponent } from './body/radar-chart/radar-chart.component';
 // import { UserManager } from '../shared/services/restcontroller/bizservice/user.service';
 // import { GoJsChartComponent } from './body/go-js-chart/go-js-chart.component';
+// import { ProgressBarModule } from 'primeng/progressbar';
 import { FooterComponent } from './footer/footer.component';
 import { HeaderComponent } from './header/header.component';
 import { SideMenuComponent } from './side-menu/side-menu.component';
-import { ProgressBarModule } from 'primeng/progressbar';
-import { ProgressbarModule } from 'ngx-bootstrap/progressbar';
+// import { ProgressBarModule } from 'primeng/progressbar';
+// import { ProgressbarModule } from 'ngx-bootstrap/progressbar';
+import { MatDialogModule } from '@angular/material/dialog';
 import { SubscriberdetailsManager } from '../shared/services/restcontroller/bizservice/subscriberdetails.service';
-// import {NgxCumulioComponent} from 'ngx-cumulio';
+// import * as ApexCharts from 'apexcharts';
+import { NgApexchartsModule } from 'ng-apexcharts';
+// import { ProgressbarModule } from 'ngx-bootstrap/ProgressbarModule';
+import { NgCircleProgressModule } from "ng-circle-progress"
 
 
 @NgModule({
-
     declarations: [
         DashBoardComponent,
         HeaderComponent,
@@ -79,13 +79,13 @@ import { SubscriberdetailsManager } from '../shared/services/restcontroller/bizs
         ProductChartComponent,
         SalebarChartComponent,
         SalepieChartComponent,
-        ComboChartComponent,
-        SalegaugeChartComponent,
-        PolarChartComponent,
-        RealtimeChartComponent,
-        AdvancepieChartComponent,
-        SalelineChartComponent,
-        DoughnutChartComponent,
+        // ComboChartComponent,
+        // SalegaugeChartComponent,
+        // PolarChartComponent,
+        // RealtimeChartComponent,
+        // AdvancepieChartComponent,
+        // SalelineChartComponent,
+        // DoughnutChartComponent,
         PiegridChartComponent,
         // SubcategoryComponent,
         // SubcatclassificationComponent,
@@ -113,10 +113,10 @@ import { SubscriberdetailsManager } from '../shared/services/restcontroller/bizs
         // TablesComponent,
         // SidemenuDashboardComponent,
         // StateChartComponent,
-        
-     
+
+
         // TreeChartComponent,
-    
+
         // SChartPieComponent,
 
         // ColumnChartComponent,
@@ -137,35 +137,32 @@ import { SubscriberdetailsManager } from '../shared/services/restcontroller/bizs
         CommonModule,
         FormsModule,
         // BarChartModule,
-        LineChartModule,
+        // LineChartModule,
         // NgxChartsModule,
-        ChartsModule,
+        // ChartsModule,
         NgApexchartsModule,
+        NgCircleProgressModule.forRoot(),
         // NgxEchartsModule.forRoot({
         //     echarts
         //   }),
-     
+        // ApexCharts,
         // D3Module,
         // MatDividerModule,
         // MatToolbarModule,
-        PerfectScrollbarModule,
-        ProgressBarModule,
-        ProgressbarModule.forRoot(),
-        RoundProgressModule,
+        // PerfectScrollbarModule,
+        // ProgressBarModule,
+        // ProgressbarModule.forRoot(),
+        // RoundProgressModule,
         TranslateModule.forRoot(),
         // FusionChartsModule,
-        GojsAngularModule,
-//         MaterialModule,
-//         MatButtonModule,
-//         MatFormFieldModule,
-//         MatInputModule,
-// MatDialogModule,
-
-NgxChartsModule,
-// BreadcrumbModule,
-
-
-
+        // GojsAngularModule,
+        //         MaterialModule,
+        //         MatButtonModule,
+        //         MatFormFieldModule,
+        //         MatInputModule,
+        // MatDialogModule,
+        // NgxChartsModule,
+        // BreadcrumbModule,
         MatMenuModule,
         CommonModule,
         FormsModule,
@@ -175,9 +172,10 @@ NgxChartsModule,
         MatSidenavModule,
         MatTabsModule,
         ColorPickerModule,
-        DashboardRoutingModule
+        DashboardRoutingModule,
+        MatDialogModule
     ],
-    providers: [DataSharedService, UserManager,SubscriptionmasterManager,SubscriberdetailsManager],
+    providers: [DataSharedService, UserManager, SubscriptionmasterManager, SubscriberdetailsManager],
     exports: [NgbCollapseModule],
 })
 export class DashboardModule { }

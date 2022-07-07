@@ -5,7 +5,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 // import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { BarChartModule, NgxChartsModule } from '@swimlane/ngx-charts';
+// import { BarChartModule, NgxChartsModule } from '@swimlane/ngx-charts';
 // import { NgApexchartsModule } from 'ng-apexcharts';
 // import { ChartsModule } from 'ng2-charts';
 // import { BBarchartComponent } from '../body/b-barchart/b-barchart.component';
@@ -38,7 +38,7 @@ import { NgApexchartsModule } from 'ng-apexcharts';
 // import { ModernChartComponent } from '../body/modern-chart/modern-chart.component';
 // import { CardChartComponent } from '../body/card-chart/card-chart.component';
 // import { RadarChartComponent } from '../body/radar-chart/radar-chart.component';
-import { ChartsModule } from 'ng2-charts';
+// import { ChartsModule } from 'ng2-charts';
 
 
 
@@ -72,15 +72,15 @@ import { ChartsModule } from 'ng2-charts';
   imports: [
     CommonModule,
     SidemenuDashboardRoutingModule,
-    BarChartModule,
+    // BarChartModule,
     NgApexchartsModule,
-    ChartsModule,
+    // ChartsModule,
     // MaterialModule,
     MatButtonModule,
     MatFormFieldModule,
     MatInputModule,
     MatDialogModule,
-    NgxChartsModule,
+    // NgxChartsModule,
  
 
     // BrowserAnimationsModule,

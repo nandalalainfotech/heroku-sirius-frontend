@@ -6,7 +6,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgbCollapseModule, NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AgGridModule } from 'ag-grid-angular';
-import { GojsAngularModule } from 'gojs-angular';
+// import { GojsAngularModule } from 'gojs-angular';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
@@ -76,7 +76,7 @@ import { ErrorInterceptor } from './_helpers/error.interceptor';
 		AgGridModule.withComponents([]),
 		NgbCollapseModule,
 		UserRegistrationModule,
-		GojsAngularModule
+		// GojsAngularModule
 	],
 	exports: [PopupComponent, NgbCollapseModule],
 	providers: [AuthManager, CalloutService, DataSharedService, UserManager, BaseService,

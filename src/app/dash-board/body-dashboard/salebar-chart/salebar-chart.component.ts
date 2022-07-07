@@ -1,27 +1,49 @@
-import { Component, OnInit } from '@angular/core';
-import { LegendPosition } from '@swimlane/ngx-charts';
+import { Component, OnInit, ViewChild } from '@angular/core';
+// import { LegendPosition } from '@swimlane/ngx-charts';
 import { SubscriberdetailsManager } from 'src/app/shared/services/restcontroller/bizservice/subscriberdetails.service';
+import {
+    ApexAxisChartSeries,
+    ApexChart,
+    ChartComponent,
+    ApexDataLabels,
+    ApexPlotOptions,
+    ApexYAxis,
+    ApexLegend,
+    ApexStroke,
+    ApexXAxis,
+    ApexFill,
+    ApexTooltip,
+    ApexGrid,
+} from "ng-apexcharts";
 
-
+export type ChartOptions = {
+    series: ApexAxisChartSeries | any;
+    chart: ApexChart | any;
+    dataLabels: ApexDataLabels | any;
+    plotOptions: ApexPlotOptions | any;
+    yaxis: ApexYAxis | any;
+    xaxis: ApexXAxis | any;
+    fill: ApexFill | any;
+    tooltip: ApexTooltip | any;
+    stroke: ApexStroke | any;
+    legend: ApexLegend | any;
+    grid: ApexGrid | any;
+    colors: string[] | any;
+};
 @Component({
     selector: 'app-salebar-chart',
     templateUrl: './salebar-chart.component.html',
     styleUrls: ['./salebar-chart.component.css']
 })
+
+
 export class SalebarChartComponent implements OnInit {
 
-    multi: any[] = [];
-    view: number[] = [700, 400];
-    showXAxis: boolean = true;
-    showYAxis: boolean = true;
-    gradient: boolean = true;
-    showLegend: boolean = true;
-    showXAxisLabel: boolean = true;
-    xAxisLabel: string = '';
-    showYAxisLabel: boolean = true;
-    yAxisLabel: string = 'User';
-    legendTitle: string = 'Years';
-    public legendPosition: LegendPosition = LegendPosition.Below;
+    @ViewChild("chart") chart!: ChartComponent;
+    public chartOptions!: Partial<ChartOptions>;
+    // name!: string | any;
+    series: any[] = [];
+    // public legendPosition: LegendPosition = LegendPosition.Below;
     animations: boolean = true;
     monthlyregistration?: Date;
     janregcount: number = 0;
@@ -36,34 +58,97 @@ export class SalebarChartComponent implements OnInit {
     octregcount: number = 0;
     novregcount: number = 0;
     decregcount: number = 0;
-    customColors: any;
-    colorScheme = { domain: ['#BAABDA'] };
     switch_value: string | undefined;
-
-
-    // view: number[];
-
+    // series = [];
     constructor(private subscriberdetailsmanager: SubscriberdetailsManager) {
 
+        this.chartOptions = {
+            series: [
+            ],
 
-        // this.view = [innerWidth / 1.9, 390];
-        // this.view = [innerWidth / 1.89, 400];
+         
+            chart: {
+                type: "bar",
+                height: 300,
+                stacked: true,
+                toolbar: {
+                    show: false
+                },
+
+                zoom: {
+                    enabled: true
+                }
+            },
+            dataLabels: {
+                enabled: false
+            },
+            plotOptions: {
+                bar: {
+                    horizontal: false
+                }
+            },
+
+            colors: ["#76BA99"],
+
+            xaxis: {
+                type: "category",
+                categories: [
+                    "JAN",
+                    "FEB",
+                    "MAR",
+                    "APR",
+                    "MAY",
+                    "JUN",
+                    "JUL",
+                    "AUG",
+                    "SEP",
+                    "OCT",
+                    "NOV",
+                    "DEC"
+                ]
+
+            },
+            legend: {
+              
+                    show: false,
+                 
+                offsetY: 40,
+                // show: true,
+                showForSingleSeries: false,
+                showForNullSeries: true,
+                showForZeroSeries: true,
+                position: 'bottom',
+                horizontalAlign: 'center', 
+                floating: false,
+            },
+            fill: {
+                opacity: 1,
+                type: "gradient",
+                gradient: {
+                    //   shade: "light",
+                    type: "horizontal",
+                    // shade: "light",
+                    // type: "horizontal",
+                    // shadeIntensity: 0.25,
+                    // gradientToColors: undefined,
+                    // inverseColors: true,
+                    // opacityFrom: 0.85,
+                    // opacityTo: 0.85,
+                    // stops: [50, 0, 100]
+                }
+            }
+        };
     }
+
 
     ngOnInit(): void {
         this.subscriberdetailsmanager.allsubdetails().subscribe((response) => {
-            //  console.log("not", response)
+            console.log("not", response)
             for (let i = 0; i < response.length; i++) {
-                // console.log("response", response)
-                // if (response[i].monthlyregistration == 'Month') {
-                //     // console.log("much",response[i] )
                 let regdetails = new Date(response[i].monthlyregistration);
-                // console.log("plandate", regdetails);
                 const months = ["01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12"];
                 let monthName = response[i].monthlyregistration ? months[regdetails.getMonth()] : "";
-
                 this.switch_value = monthName;
-                // console.log("switch_value", this.switch_value)
                 switch (this.switch_value) {
 
                     case "01":
@@ -90,7 +175,7 @@ export class SalebarChartComponent implements OnInit {
                     case "06":
                         this.switch_value = "06";
                         this.juneregcount++;
-                        console.log("reg", this.juneregcount)
+                        console.log("musk", this.juneregcount)
                         break;
                     case "07":
                         this.switch_value = "07";
@@ -119,139 +204,21 @@ export class SalebarChartComponent implements OnInit {
                 }
 
             }
-            this.multi = [
-                {
-                    "name": "JAN",
-                    "series": [
-                        {
-                            "name": "2022",
-                            "value": this.janregcount
-                        },
-                    ]
-                },
-                {
-                    "name": "FEB",
-                    "series": [
-                        {
-                            "name": "2022",
-                            "value": this.febregcount,
-                        },
+     
+            this.chartOptions.series = [
 
-                    ]
-                },
                 {
-                    "name": "MAR",
-                    "series": [
-                        {
-                            "name": "2022",
-                            "value": this.marregcount,
-                        },
-                    ]
+                    data: [this.janregcount, this.febregcount, this.marregcount,
+                        this.aprregcount,this.mayregcount, this.juneregcount,this.julyregcount,
+                        this.augregcount, this.sepregcount,this.octregcount,this.novregcount,
+                        this.decregcount ]
                 },
-                {
-                    "name": "APR",
-                    "series": [
-                        {
-                            "name": "2022",
-                            "value": this.aprregcount,
-                        },
-                    ]
-                },
-                {
-                    "name": "MAY",
-                    "series": [
-                        {
-                            "name": "2022",
-                            "value": this.mayregcount,
-                        },
-                    ]
-                },
-                {
-                    "name": "JUNE",
-                    "series": [
-                        {
-                            "name": "2022",
-                            "value": this.juneregcount,
-                        },
-                    ]
-                },
-                {
-                    "name": "JULY",
-                    "series": [
-                        {
-                            "name": "2022",
-                            "value": this.julyregcount,
-                        },
-                    ]
-                },
-                {
-                    "name": "AUG",
-                    "series": [
-                        {
-                            "name": "2022",
-                            "value": this.augregcount,
-                        },
 
-                    ]
-                },
-                {
-                    "name": "SEP",
-                    "series": [
-                        {
-                            "name": "2022",
-                            "value": this.sepregcount,
-                        },
-                    ]
-                },
-                {
-                    "name": "OCT",
-                    "series": [
-                        {
-                            "name": "2022",
-                            "value": this.octregcount,
-                        },
-                    ]
-                },
-                {
-                    "name": "NOV",
-                    "series": [
-                        {
-                            "name": "2022",
-                            "value": this.novregcount,
-                        },
-                    ]
-                },
-                {
-                    "name": "DEC",
-                    "series": [
-                        {
-                            "name": "2022",
-                            "value": this.decregcount,
-                        },
-
-                    ]
-                },
+          
             ]
-        })
-
+        },
+        )
     }
 
-
-
-    onSelect(data: any): void {
-        // console.log('Item clicked', JSON.parse(JSON.stringify(data)));
-    }
-
-    onActivate(data: any): void {
-        // console.log('Activate', JSON.parse(JSON.stringify(data)));
-    }
-
-    onDeactivate(data: any): void {
-        // console.log('Deactivate', JSON.parse(JSON.stringify(data)));
-    }
-
-    //   onResize(event: any) {
-    //     this.view = [event.target.innerWidth / 1.79, 400];
-    // }
 
 }
