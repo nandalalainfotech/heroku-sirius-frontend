@@ -6,7 +6,7 @@ import { PasswordComponent } from './password/password.component';
 import { RegistrationComponent } from './registration/registration.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatTabsModule } from '@angular/material/tabs';
-import { FlexLayoutModule } from '@angular/flex-layout';
+// import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { ProfileComponent } from './profile.component';
 import { AgGridModule } from 'ag-grid-angular';
@@ -34,11 +34,13 @@ import { LoginManager } from 'src/app/shared/services/restcontroller/bizservice/
 
 
 @NgModule({
+  
   declarations: [
     ProfileComponent,
     UsernameComponent,
     PasswordComponent,
     RegistrationComponent],
+
   imports: [
     CommonModule,
     ProfileRoutingModule,
@@ -46,10 +48,11 @@ import { LoginManager } from 'src/app/shared/services/restcontroller/bizservice/
     ReactiveFormsModule,
     BreadcrumbModule,
     MatTabsModule,
-    FlexLayoutModule,
+    // FlexLayoutModule,
     MatSidenavModule,
     AgGridModule.withComponents([])
   ],
+
   providers: [
     UserManager,
     AuthManager,

@@ -5,11 +5,11 @@ import { BreadcrumbModule } from '../../breadcrumb/breadcrumb.module';
 import { UserThemeComponent } from './user-theme.component';
 import { ColorPickerModule } from 'ngx-color-picker';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { MatTabsModule } from '@angular/material/tabs';
-import { FlexLayoutModule } from '@angular/flex-layout';
+// import { MatTabsModule } from '@angular/material/tabs';
+// import { FlexLayoutModule } from '@angular/flex-layout';
+// import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatSidenavModule } from '@angular/material/sidenav';
-
-
+import { MatTabsModule } from '@angular/material/tabs';
 
 @NgModule({
   declarations: [
@@ -23,7 +23,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
     FormsModule,
     ReactiveFormsModule,
     MatTabsModule,
-    FlexLayoutModule,
+    // FlexLayoutModule,
     MatSidenavModule,
     
   
