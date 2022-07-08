@@ -11,4 +11,4 @@ app.get('/*', function (req, res) {
   res.sendFile('index.html', { root: 'dist/sirius-matrimony-frontend/'});
 });
 
-app.listen(process.env.PORT || 8081);
+app.listen(process.env.PORT || 8080);
